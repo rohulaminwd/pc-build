@@ -1,12 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
 
 const Navbar = () => {
+  const [stickyClass, setStickyClass] = useState("0");
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
+
+  function stickNavbar() {
+    let windowHeight = window.scrollY;
+    windowHeight > 200 ? setStickyClass("sticky-nav") : setStickyClass("");
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", stickNavbar);
+  }, []);
 
   const linkItem = (
     <>
@@ -15,11 +25,11 @@ const Navbar = () => {
           HOME
         </Link>
       </li>
-      <li>
+      <li className="z-50">
         <div>
           <Menu as="div" className="relative inline-block text-left">
             <div className="">
-              <Menu.Button className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+              <Menu.Button className="inline-flex justify-center w-full text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
                 CATEGORIES
                 <svg
                   className="w-5 h-5 ml-2 -mr-1"
@@ -170,11 +180,31 @@ const Navbar = () => {
   );
   return (
     <div
-      className={` ${stickyClass} duration-300 z-50 font-bold bg-slate-700 text-cyan-900 w-full`}
+      className={` ${stickyClass} duration-300 z-50 font-bold bg-base-100 w-full`}
     >
-      <div className="navbar mx-auto container bg-base-100">
+      <div className="navbar mx-auto container bg-[#ffffffbb] rounded-lg z-50 border-b ">
         <div className="navbar-start">
-          <div className="dropdown">
+          <Link
+            href={"/"}
+            className="flex title-font font-medium items-center text-gray"
+          >
+            <div>
+              <Image
+                height={40}
+                src="/logo1.png"
+                alt="logo"
+                width={40}
+                className="scale-150"
+              />
+            </div>
+            <span className="ml-3 text-xl font-extrabold">PC</span>
+          </Link>
+        </div>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1">{linkItem}</ul>
+        </div>
+        <div className="navbar-end">
+          <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -198,26 +228,6 @@ const Navbar = () => {
               {linkItem}
             </ul>
           </div>
-          <Link
-            href={"/"}
-            className="flex title-font font-medium items-center text-gray mb-4 md:mb-0"
-          >
-            <Image
-              height={40}
-              src="/logo1.png"
-              alt="logo"
-              width={40}
-              className="scale-150"
-            />
-            <span className="ml-3 hidden sm:block text-xl font-extrabold">
-              BUILD CORNER
-            </span>
-          </Link>
-        </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{linkItem}</ul>
-        </div>
-        <div className="navbar-end">
           <Link href={"/Login"}>
             <button className="bg-gray-500 hover:bg-yellow-800 text-white font-bold p-2 rounded">
               Login
