@@ -136,13 +136,13 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <LoadingBar
-        color="#f11946"
+        color="#9530e3"
         progress={progress}
         height={2}
         waitingTime={500}
         onLoaderFinished={() => setProgress(0)}
       />
-      <Cart
+      {/* <Cart
         openState={cartOpen}
         openCart={openCart}
         cart={cart}
@@ -151,7 +151,7 @@ export default function App({ Component, pageProps }) {
         clearCart={clearCart}
         addToCart={addToCart}
         user={user}
-      />
+      /> */}
       <Navbar
         logout={logout}
         user={user}

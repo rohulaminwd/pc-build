@@ -64,80 +64,16 @@ const Post = ({ addToCart, products, buyNow }) => {
               </h1>
 
               <p className="leading-relaxed mb-4">{products.desc}</p>
-              <p className="leading-relaxed mb-4"> Available: {products.availableQty} left</p>
+              <p className="leading-relaxed mb-4">
+                {" "}
+                Available: {products.availableQty} left
+              </p>
 
               <div className="flex">
                 <span className="title-font font-medium text-2xl text-gray-900">
                   ${products.price}
                 </span>
-                {/* <button
-                  onClick={() =>
-                    addToCart(
-                      slug,
-                      1,
-                      products.price,
-                      products.title,
-                      products.desc,
-                      products.image,
-                      products.brand,
-                      products.slug
-                    )
-                  }
-                  // onClick={addItemToBasket}
-                  className="flex ml-auto text-white bg-blue-500 border-0 p-2 focus:outline-none hover:bg-blue-600 rounded"
-                >
-                  Add to cart
-                </button> */}
-                {/* <button
-                  onClick={() =>
-                    buyNow(
-                      slug,
-                      1,
-                      products.price,
-                      products.title,
-                      products.desc,
-                      products.image,
-                      products.brand,
-                      products.slug
-                    )
-                  }
-                  className="p-2 border-1 rounded inline-flex items-center justify-center text-white bg-black ml-4"
-                >
-                  Buy Now
-                </button> */}
               </div>
-              {/* <div className="mt-6 flex space-x-2">
-                <input
-                  type="number"
-                  className="px-2 border-2 rounded-lg border-gray-400"
-                  maxLength={6}
-                  placeholder="Enter pincode"
-                  onChange={onChangePin}
-                  id="pincode"
-                />
-                <button
-                  onClick={checkpincode}
-                  className="flex items-center ml-auto text-white bg-gray-500 border-0 p-2 focus:outline-none hover:bg-gray-600 rounded"
-                >
-                  check pincode
-                </button>
-              </div> */}
-              {/* <div>
-                {!service && service != null && (
-                  <div className="mt-6 flex space-x-2">
-                    <p className="text-red-500">
-                      Service not available in this pincode
-                    </p>
-                  </div>
-                )}
-                {service && service != null && (
-                  <div className="mt-6 flex space-x-2">
-                    <p className="text-green-500">
-                      Service available in this pincode
-                    </p>
-                  </div>
-                )}
-              </div> */}
             </div>
           </div>
         </div>
