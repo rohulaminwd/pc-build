@@ -201,7 +201,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{linkItem}</ul>
+          <ul className="menu menu-horizontal flex gap-x-3 px-1">{linkItem}</ul>
         </div>
         <div className="navbar-end">
           <div className="dropdown dropdown-end">
