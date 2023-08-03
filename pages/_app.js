@@ -2,13 +2,14 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import "@/styles/globals.css";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingBar from "react-top-loading-bar";
-import Cart from "./cart";
 var jwt = require("jsonwebtoken");
+
+export const PcContext = createContext();
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -18,6 +19,7 @@ export default function App({ Component, pageProps }) {
   const [user, setUser] = useState({ value: null });
   const [key, setKey] = useState(0);
   const [cartOpen, setCartOpen] = useState(false);
+  const [pcBuild, setPcBuild] = useState([]);
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -134,7 +136,7 @@ export default function App({ Component, pageProps }) {
   };
 
   return (
-    <>
+    <PcContext.Provider value={{ pcBuild, setPcBuild }}>
       <LoadingBar
         color="#9530e3"
         progress={progress}
@@ -142,16 +144,6 @@ export default function App({ Component, pageProps }) {
         waitingTime={500}
         onLoaderFinished={() => setProgress(0)}
       />
-      {/* <Cart
-        openState={cartOpen}
-        openCart={openCart}
-        cart={cart}
-        total={total}
-        removeFromCart={removeFromCart}
-        clearCart={clearCart}
-        addToCart={addToCart}
-        user={user}
-      /> */}
       <Navbar
         logout={logout}
         user={user}
@@ -187,6 +179,6 @@ export default function App({ Component, pageProps }) {
         {...pageProps}
       />
       <Footer />
-    </>
+    </PcContext.Provider>
   );
 }
