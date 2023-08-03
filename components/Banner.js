@@ -6,8 +6,8 @@ import Link from "next/link";
 const Banner = () => {
   return (
     <div className="container font-reem mx-auto my-10">
-      <div className=" md:flex w-full justify-between items-center mx-3 md:mx-0 p-5 rounded-xl border border-dashed border-purple-300">
-        <div className="w-full">
+      <div className=" md:flex w-full justify-between items-center p-5 rounded-xl sm:border border-dashed border-purple-300">
+        <div className="w-full text-center sm:text-left mb-5 sm:0">
           <h1 className="text-3xl font-bold oswald">Welcome to Pc builder</h1>
           <p className="font-bold my-5">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
